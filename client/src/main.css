@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+}
+
+.friends {
+    width: 30%;
+}
+.messagesBox {
+    width: 70%;
+}
+.person {
+    width: 100%;
+    cursor: pointer;
+}
+
+.person :hover {
+background-color: #c1c2c3;
+}
+
