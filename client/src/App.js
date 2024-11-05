@@ -3,6 +3,7 @@ import LoginForm from "./components/LoginForm";
 import {Routes, BrowserRouter, Route} from 'react-router-dom'
 import MessagesBox from "./components/message/messagesBox";
 import Main from "./components/Accueil/Main";
+import UpdateProfile from "./components/profile";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<LoginForm />} />
           <Route path="/register" element={<UserForm />} />
           <Route path="/accueil" element={<Main />} />
+          <Route path="/updateProfile" element={<UpdateProfile />} />
         </Routes>
       </BrowserRouter>
       {/* <MessagesBox /> */}

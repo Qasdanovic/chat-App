@@ -24,6 +24,9 @@ router.route('/getUsers/:id')
 router.route('/getUser/:id')
       .get(userController.getUser)
 
+router.route('/updateUser/:id')
+      .put(userController.updateUser)
+
 
 
 module.exports = router

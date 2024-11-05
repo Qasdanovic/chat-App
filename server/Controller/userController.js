@@ -105,6 +105,19 @@ const userController = {
             return res.json({message : 'theres no user found'})
         }
         res.json(userWanted)
+    } ,
+
+    updateUser : async (req, res) => {
+        const {username, email, profilePicture} = req.body ;
+        const id = req.params.id
+        const data = {
+            username : username ,
+            email : email ,
+            profilePicture : profilePicture ,
+        }
+
+        await User.findByIdAndUpdate(id, data)
+        return res.json({message : 'updated success'})
     }
 };
 

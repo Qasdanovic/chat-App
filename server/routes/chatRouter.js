@@ -20,5 +20,8 @@ const chatController = require('../Controller/chatController')
 router.route('/getChat')
       .get(chatController.getChat)
 
+router.route('/updateChat/:id')
+      .put(chatController.updateChat)
+
 
 module.exports = router

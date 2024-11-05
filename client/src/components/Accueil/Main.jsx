@@ -77,13 +77,17 @@ function Main() {
         redirect('/')
     }
 
+    const updateProfile = () => {
+        redirect('/updateProfile')
+    }
+
 
     return (
         <div>
             <div className="flex justify-between items-center mb-3 bg-white rounded-md shadow-md p-4">
                 <p className="text-left font-bold">Hello {userActuel ?userActuel.username : ''}</p>
                 <div className="flex gap-2">
-                    <button className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600">Update Profile</button>
+                    <button className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600" onClick={updateProfile}>Update Profile</button>
                     <button className="bg-red-500 text-white rounded-md px-4 py-2 hover:bg-red-600" onClick={disconnect}>Disconnect</button>
                 </div>
             </div>
@@ -93,7 +97,7 @@ function Main() {
                     {
                         users.length > 0 ? users.map(user => (
                             <div className="person" onClick={() => getChat(user._id)} key={user._id}>
-                                <Person userId={user._id} profile={user.profilePicture} name={user.username} />
+                                <Person userId={user._id} lastMessage={currentChat.lastMessage} profile={user.profilePicture} name={user.username} />
                             </div>
                         ))
                         :

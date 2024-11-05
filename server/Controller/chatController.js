@@ -17,13 +17,15 @@ const chatController = {
         }
     } ,
 
-    // sendMessage : async (req, res) {
-    //     try {
+    updateChat : async (req, res) => {
+        const id = req.params.id ;
 
-    //     }catch(err) {
+        await Chat.findByIdAndUpdate(id, {
+            lastMessage : req.body.lastMessage
+        })
 
-    //     }
-    // }
+        res.json({message : 'updated success'})
+    }
 };
 
 module.exports = chatController;
