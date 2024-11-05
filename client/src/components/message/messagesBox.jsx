@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Message1 from "./message1";
 import Message2 from "./message2";
 import axios from "axios";
-import { useRef } from "react";
 
 function MessagesBox({ idSender, idChat, currentChat }) {
   const [message, setMessage] = useState("");
@@ -24,6 +23,10 @@ function MessagesBox({ idSender, idChat, currentChat }) {
    * @desc this function for send a new message
    */
   const sendMessage = async () => {
+    if (!message) {
+      return ;
+    }
+
     try {
       await axios.post("http://localhost:4000/message/sendMessage", {
         chatId: idChat,
@@ -31,20 +34,15 @@ function MessagesBox({ idSender, idChat, currentChat }) {
         message: message,
       });
 
-      setPreviousMessages((previousMessages) => [...previousMessages, {
-        chatId: idChat,
-        senderId: idSender,
-        message: message,
-      }]);
-
-      await axios
-      .get("http://localhost:4000/message/getAllMessages")
-      .then((response) => setPreviousMessages(response.data.result))
-
+      
+      
       await axios.put(`http://localhost:4000/chats/updateChat/${idChat}`, {
         lastMessage : message 
       })
-
+      
+      await axios
+      .get("http://localhost:4000/message/getAllMessages")
+      .then((response) => setPreviousMessages(response.data.result))
       setMessage("");
 
     } catch (error) {
@@ -59,7 +57,7 @@ function MessagesBox({ idSender, idChat, currentChat }) {
       setChatWanted(msgWanted);
     } 
   }, [previousMessages,idChat])
-  
+
   
   useEffect(() => {
     const scrollElement = document.getElementById("scroll");

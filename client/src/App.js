@@ -4,6 +4,8 @@ import {Routes, BrowserRouter, Route} from 'react-router-dom'
 import MessagesBox from "./components/message/messagesBox";
 import Main from "./components/Accueil/Main";
 import UpdateProfile from "./components/profile";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {

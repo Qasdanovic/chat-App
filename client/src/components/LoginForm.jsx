@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 function LoginForm() {
 
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-
+  
   const navigate = useNavigate()
+  
+  const id = Cookies.get('userId')
 
+  useEffect(() => {
+    if (id) {
+      console.log(id)
+      navigate('/accueil')
+    }
+  }, [])
   const handelSubmit = async (e) => {
     e.preventDefault()
     if (!email || !password){
@@ -29,8 +40,7 @@ function LoginForm() {
         return;
       }
     }
-    
-    // console.log(response.data)
+
 
     navigate('/accueil')
   }

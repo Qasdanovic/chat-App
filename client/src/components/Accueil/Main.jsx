@@ -5,6 +5,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 function Main() {
 
@@ -49,17 +50,6 @@ function Main() {
         })
         
     }, [])
-
-
-    if(id){
-        try {
-            axios.get(`http://localhost:4000/users/getUser/${id}`)
-                .then((res) => setUserActuel(res.data))
-        } catch (error) {
-            console.log(error);
-    }
-}
-
 
     const getChat = (idFriend) => {
         console.log(idFriend)
