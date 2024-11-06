@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { toast} from 'react-toastify';
 
 function LoginForm() {
 
@@ -33,6 +34,8 @@ function LoginForm() {
         password : password
       }, { withCredentials: true })
       console.log(response.data)
+
+      toast.success('Successfully logged in!');
     }
     catch(error){
       if (error.response){

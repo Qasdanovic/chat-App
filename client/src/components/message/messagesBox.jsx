@@ -3,6 +3,7 @@ import Message1 from "./message1";
 import Message2 from "./message2";
 import axios from "axios";
 
+
 function MessagesBox({ idSender, idChat, currentChat }) {
   const [message, setMessage] = useState("");
   const [previousMessages, setPreviousMessages] = useState([]);
@@ -18,6 +19,8 @@ function MessagesBox({ idSender, idChat, currentChat }) {
       .then((response) => setPreviousMessages(response.data.result))
       .catch((error) => console.error("Error fetching messages:", error));
   }, []);
+
+  
 
   /**
    * @desc this function for send a new message
@@ -65,6 +68,7 @@ function MessagesBox({ idSender, idChat, currentChat }) {
       scrollElement.scrollTop = scrollElement.scrollHeight;
     }
   }, [chatWanted]);
+
 
   return (
     <div className="flex flex-col h-screen bg-gray-100 p-4">

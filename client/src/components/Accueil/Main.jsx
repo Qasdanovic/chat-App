@@ -17,6 +17,15 @@ function Main() {
 
     const redirect = useNavigate()
 
+    useEffect(() => {
+        axios.get(`http://localhost:4000/users/getUser/${id}`)
+        .then((response) => setUserActuel(response.data))
+        .catch(error => console.log("Error fetching user:", error));
+      },[id])
+
+    console.log(userActuel);
+
+
     /**
      * @desc this useEffect to get the user id from cookies
      */
@@ -52,7 +61,6 @@ function Main() {
     }, [])
 
     const getChat = (idFriend) => {
-        console.log(idFriend)
         if (!allChats) return ;
         const chatWanted = allChats.filter(chat => {
             return chat.participants[0] === idFriend && chat.participants[1] === id || chat.participants[1] === idFriend && chat.participants[0] === id
@@ -71,11 +79,11 @@ function Main() {
         redirect('/updateProfile')
     }
 
-
+console.log(userActuel)
     return (
         <div>
             <div className="flex justify-between items-center mb-3 bg-white rounded-md shadow-md p-4">
-                <p className="text-left font-bold">Hello {userActuel ?userActuel.username : ''}</p>
+                <p className="text-left font-bold">Hello {userActuel ? userActuel.username : ''}</p>
                 <div className="flex gap-2">
                     <button className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600" onClick={updateProfile}>Update Profile</button>
                     <button className="bg-red-500 text-white rounded-md px-4 py-2 hover:bg-red-600" onClick={disconnect}>Disconnect</button>

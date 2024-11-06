@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { toast } from "react-toastify";
 
 function UserForm() {
 
@@ -23,19 +24,27 @@ function UserForm() {
     
 
     const submitHandler = async (e) => {
+        e.preventDefault()
         if (!username || !email || !password || !profilePicture){
-            e.preventDefault()
+            toast.error('All fields are required')
             return;
         }
         else{
-            axios.post('http://localhost:4000/users/register', {
-                email : email ,
-                username : username ,
-                password : password ,
-                profilePicture : profilePicture
-            })
-            .then(() => navigate('/register'))
-            .catch(err => console.log('cannot send data',err))
+            try{
+                await axios.post('http://localhost:4000/users/register', {
+                    email : email ,
+                    username : username ,
+                    password : password ,
+                    profilePicture : profilePicture
+                })
+                toast.success('user created successfully')
+                navigate('/')
+            }catch(err){
+                toast.error('email already existe !')
+            }
+
+            // .then(() => navigate('/register'))
+            // .catch(err => console.log('cannot send data',err))
         }
         
     }

@@ -8,6 +8,12 @@ const userController = {
         try {
 
             const { username, password, email, profilePicture } = req.body;
+
+            const checkEmail = await User.findOne({ email: email });
+            if(checkEmail) {
+                return res.status(409).json({ message: "Email already exists" });
+            }
+            
             const hashedPass = await bcrypt.hash(password, 10);
 
             const newUser = new User({
@@ -118,6 +124,18 @@ const userController = {
 
         await User.findByIdAndUpdate(id, data)
         return res.json({message : 'updated success'})
+    } ,
+
+    checkUser : (req, res) => {
+        const {email} = req.body;
+        User.findOne({email : email})
+        .then(user => {
+            if(user){
+                return res.status(200).json({message : 'user exist'})
+            } else {
+                return res.status(404).json({message : 'user not exist'})
+            }
+        })
     }
 };
 

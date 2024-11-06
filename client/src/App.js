@@ -1,7 +1,6 @@
 import UserForm from "./components/UserForm";
 import LoginForm from "./components/LoginForm";
 import {Routes, BrowserRouter, Route} from 'react-router-dom'
-import MessagesBox from "./components/message/messagesBox";
 import Main from "./components/Accueil/Main";
 import UpdateProfile from "./components/profile";
 import { ToastContainer } from 'react-toastify';
@@ -11,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div className="App">
+       <ToastContainer position="top-center" />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginForm />} />
