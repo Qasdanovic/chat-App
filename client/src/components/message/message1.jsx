@@ -7,13 +7,13 @@ function Message1({message, createdAt}) {
 
     const date = new Date(createdAt).toLocaleDateString([], {
         year: '2-digit',
+        day: 'numeric',
         month: 'numeric',
-        day: 'numeric'
     });
 
     return (
         <div className="flex gap-3 justify-start">
-            <div className="bg-blue-500 text-white p-3 rounded-lg max-w-xs">
+            <div className="bg-blue-500 text-white p-3 rounded-tl-xl rounded-br-lg rounded-tr-lg max-w-xs">
             <p>{message}</p>
             </div>
             <span className="text-sm text-gray-400 mb-3 self-end">

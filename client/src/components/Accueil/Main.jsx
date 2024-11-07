@@ -50,6 +50,7 @@ function Main() {
 
     /**
      * @desc this useEffect to get all chats
+     * @method get
      */
 
     useEffect(() => {
@@ -72,6 +73,7 @@ function Main() {
     const disconnect = () => {
         Cookies.remove('token')
         Cookies.remove('userId')
+        toast.error('Disconnected')
         redirect('/')
     }
 
@@ -95,7 +97,7 @@ console.log(userActuel)
                     {
                         users.length > 0 ? users.map(user => (
                             <div className="person" onClick={() => getChat(user._id)} key={user._id}>
-                                <Person userId={user._id} lastMessage={currentChat.lastMessage} profile={user.profilePicture} name={user.username} />
+                                <Person userId={user._id} profile={user.profilePicture} name={user.username} />
                             </div>
                         ))
                         :

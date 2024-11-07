@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-function Person({name, profile}) {
+function Person({name, profile, lastMessage}) {
   const [prfl, setPrfl] = useState('')
   useEffect(() => {
     const filePath = `/images/${profile}`;
@@ -23,7 +23,7 @@ function Person({name, profile}) {
           <div className="w-100">
             <p className="font-semibold text-gray-900">{name}</p>
             <p className="text-gray-500 text-sm">
-              
+              {lastMessage}
             </p>
           </div>
         </div>

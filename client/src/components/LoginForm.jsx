@@ -21,6 +21,7 @@ function LoginForm() {
       navigate('/accueil')
     }
   }, [])
+  
   const handelSubmit = async (e) => {
     e.preventDefault()
     if (!email || !password){

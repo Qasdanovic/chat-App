@@ -11,11 +11,11 @@ function Message2({message, createdAt}) {
         day: 'numeric'
     });
     return (
-        <div className="flex justify-end gap-3">
+        <div className="flex justify-end gap-3 ">
             <span className="text-sm text-gray-400 mb-3 self-end">
                 sent on {date} at {time}
             </span>
-            <div className="bg-green-500 text-white p-3 rounded-lg max-w-xs">
+            <div className="bg-green-500 text-white p-3 max-w-xs rounded-tl-xl rounded-bl-lg rounded-tr-lg">
             <p>{message}</p>
             </div>
         </div>
