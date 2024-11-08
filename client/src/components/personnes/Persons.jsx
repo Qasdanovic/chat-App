@@ -8,7 +8,6 @@ function Person({name, profile, lastMessage}) {
     const filePath = `/images/${profile}`;
     const fileName = filePath.split("\\").pop();
     setPrfl(`/images/${fileName}`)
-    console.log(fileName)
   }, [prfl])
     return (
         <div className="flex items-center ml-3 space-x-2 p-2">

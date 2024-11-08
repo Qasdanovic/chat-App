@@ -58,7 +58,6 @@ function UpdateProfile() {
             const filePath = `${profilePicture}`;
             const fileName = filePath.split("\\").pop();
             setProfilePicture(`/images/${fileName}`)
-            console.log(profilePicture)
         }
       }, [user])
 
